@@ -131,11 +131,6 @@
         }
       ],
       "id": 3
-    },
-    {
-      "name": "Test Pizza",
-      "toppings": [],
-      "id": 4
     }
   ]
 }
