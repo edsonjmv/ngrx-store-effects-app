@@ -1,13 +1,13 @@
-import * as fromPizzas from "./../actions/pizzas.action";
-import { Pizza } from "./../../models/pizza.model";
+import * as fromPizzas from "../actions/pizzas.action";
+import { Pizza } from "../../models/pizza.model";
 
 export interface PizzaState {
-  entities: { [id: number] : Pizza };
+  entities: { [id: number]: Pizza };
   loaded: boolean;
   loading: boolean;
 }
 
-export const initialState = {
+export const initialState: PizzaState = {
   entities: {},
   loaded: false,
   loading: false
@@ -70,6 +70,15 @@ export function reducer(
       };
     }
 
+    case fromPizzas.REMOVE_PIZZA_SUCCESS: {
+      const pizza = action.payload;
+      const { [pizza.id]: removed, ...entities } = state.entities;
+
+      return {
+        ...state,
+        entities
+      };
+    }
   }
 
   return state;
